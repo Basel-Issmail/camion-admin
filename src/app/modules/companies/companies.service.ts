@@ -15,7 +15,14 @@ export class CompaniesService {
   }
 
   flattenObjectRows(data) {
+
+    console.log(data['rows'][0]);
+
+
     data['rows'].forEach(company => {
+      company['carBrand'] = this.getStringFromObj(company['carBrand']);
+      company['language'] = this.getStringFromObj(company['language']);
+      company['serviceType'] = this.getStringFromObj(company['serviceType']);
       company['companyId'] = company['id'];
       company['id'] = company['user']['id'];
       company['approved'] = company['user']['approved'];
@@ -24,4 +31,15 @@ export class CompaniesService {
     });
     return data;
   }
+
+  getStringFromObj(propertyObj) {
+    const resultArr = [];
+    for (const key in propertyObj) {
+      if (propertyObj[key] === true) {
+        resultArr.push(key);
+      }
+    }
+    return resultArr.join(', ');
+  }
+
 }

@@ -7,10 +7,10 @@ export const tableConfig: TableContentConfig = {
   index: tabsConfig.ALL_TAB_INDEX,
   tabType: tabsConfig.ALL_TYPE,
   displayCols: {
-    DISPLAYED_COLS: [ 'name', 'vat', 'email', 'telephone', 'language', 'car_brands'],
+    DISPLAYED_COLS: [ 'name', 'vat', 'email', 'telephone', 'language', 'carBrand'],
     LABELS: [ 'Azienda', 'Piva', 'Email', 'Telefono', 'Lingua parlate', 'Marche trattate', 'Tipologia',
     'Registrato il', 'Via', 'N', 'Cap', 'requests_received', 'requests_approved'],
-    COLS: ['name', 'vat', 'email', 'telephone', 'language', 'car_brands', 'service_types',
+    COLS: ['name', 'vat', 'email', 'telephone', 'language', 'carBrand', 'serviceType',
     'createdAt', 'street', 'number', 'cap', 'requests_received', 'requests_approved'],
   },
   specialLabels: [specialLabels.Approved],
