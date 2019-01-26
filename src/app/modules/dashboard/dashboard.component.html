@@ -40,5 +40,80 @@
     <div style="height: 4px !important;">
       <mat-progress-bar *ngIf="spinnerService.isLoading" style="height: 100% !important;" mode="indeterminate"></mat-progress-bar>
     </div>
+
+    <mat-card>
+      <mat-card-content>
+        <div fxLayout="row" fxLayoutWrap="wrap">
+          <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-tab-group mat-stretch-tabs (selectedTabChange)="tabChange($event)">
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <span style="display: contents" [class.all]="currentIndex === 0">
+
+
+                    <mat-icon class="mat-tab-icon">face</mat-icon>
+                    &nbsp;&nbsp;Lista utenti
+                  </span>
+                </ng-template>
+              </mat-tab>
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <span style="display: contents" [class.reminded]="currentIndex === 1">
+                    <mat-icon class="mat-tab-icon">location_city</mat-icon>
+                    &nbsp;&nbsp;Lista aziende
+                  </span>
+                </ng-template>
+              </mat-tab>
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <mat-icon class="mat-tab-icon">assessment</mat-icon>
+                  &nbsp;&nbsp;statistiche
+                </ng-template>
+              </mat-tab>
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <span style="display: contents" [class.deleted]="currentIndex === 2">
+                    <mat-icon class="mat-tab-icon">local_atm</mat-icon>
+                    &nbsp;&nbsp;pubblicita
+                  </span>
+                </ng-template>
+              </mat-tab>
+
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <span style="display: contents" [class.deleted]="currentIndex === 3">
+                    <mat-icon class="mat-tab-icon">description</mat-icon>
+                    &nbsp;&nbsp;caica pdf
+                  </span>
+                </ng-template>
+              </mat-tab>
+
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <span style="display: contents" [class.deleted]="currentIndex === 4">
+                    <mat-icon class="mat-tab-icon">insert_comment</mat-icon>
+                    &nbsp;&nbsp;feedback
+                  </span>
+                </ng-template>
+              </mat-tab>
+
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <span style="display: contents" [class.deleted]="currentIndex === 5">
+                    <mat-icon class="mat-tab-icon">notification_important</mat-icon>
+                    &nbsp;&nbsp;notifiche
+                  </span>
+                </ng-template>
+              </mat-tab>
+
+
+
+            </mat-tab-group>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+
   </router-outlet>
 </div>

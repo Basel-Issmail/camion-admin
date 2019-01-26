@@ -1,0 +1,80 @@
+.search-section {
+    width: 100%;
+    height: 46px;
+    margin-top: 2px;
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    display: inline-flex;
+  }
+  
+  .message-section {
+    height: 46px;
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    align-items: center;
+    text-align: center;
+    display: grid;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .search-button {
+    width: 100%;
+    height: 46px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  
+  .base-line {
+    display: flex;
+    align-items: center;
+    color: #757575;
+  }
+  
+  .action-icon {
+    font-size: 22px;
+    cursor: pointer;
+    padding-right: 35px;
+    color: #7a7a7a;
+  }
+  
+  .action-icon:hover {
+    color: #e07000;
+  }
+  
+  .mat-stroked-button {
+    border: none;
+  }
+  
+  ::ng-deep .mat-flat-button {
+    min-width: 60px !important;
+    line-height: 32px !important;
+  }
+  
+  ::ng-deep .mat-tab-label {
+    font-weight: 600 !important;
+  }
+  
+  ::ng-deep .all {
+    color: #1e88e5 !important;
+  }
+  
+  ::ng-deep .reminded {
+    color: #e07000 !important;
+  }
+  
+  ::ng-deep .deleted {
+    color: #d93025 !important;
+  }
+  
+  ::ng-deep .mat-menu-content {
+    height: 400px !important;
+  }
+  
