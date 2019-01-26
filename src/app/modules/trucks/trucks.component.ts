@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { tableConfig } from './config/trucks-config';
 import { TrucksService } from './trucks.service';
 import { Action } from 'src/app/shared/models/Action';
@@ -10,7 +10,7 @@ import { ActionEventsService } from 'src/app/shared/components/table/action-even
   templateUrl: './trucks.component.html',
   styleUrls: ['./trucks.component.scss']
 })
-export class TrucksComponent implements OnInit {
+export class TrucksComponent implements OnInit, OnDestroy {
 
   tableConfig = tableConfig;
   tableContent;
@@ -28,15 +28,14 @@ export class TrucksComponent implements OnInit {
 
 
     /**
- * subscribe to actions events
- */
+     * subscribe to actions events
+     */
     this.subscriptions.push(this.actionEventsService.onTableContentAction$.subscribe(
       entry => {
         const ids = entry['ids'];
         const params = entry['params'];
         let observableAction = null;
         const message = null;
-
         switch (entry['action']) {
           case Action.Paginate:
             observableAction = this.trucksService.getTrucks(params);
@@ -58,6 +57,10 @@ export class TrucksComponent implements OnInit {
         }
       }
     ));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
 }

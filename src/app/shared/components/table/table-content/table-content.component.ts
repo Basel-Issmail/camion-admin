@@ -128,7 +128,7 @@ export class TableContentComponent implements OnInit, OnDestroy {
   getParams() {
     const params = {
       limit: (this.tableContentData && this.tableContentData.per_page) ? this.tableContentData.per_page : 50,
-      offset: (this.tableContentData && this.tableContentData.current_page) ? this.tableContentData.current_page : 1,
+      offset: (this.tableContentData && this.tableContentData.current_page) ? this.tableContentData.current_page : 0,
       tab: this.tableContentConfig.tabType,
       onField: this.sort.active || '',
       sort: this.sort.direction || ''

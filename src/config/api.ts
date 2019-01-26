@@ -1,7 +1,7 @@
-export const localURL = 'http://localhost/v1/';
+export const localURL = 'http://localhost:3000/v1/';
 export const serverURL = 'http://camion.storexweb.com/v1/';
 
-export const baseURL = serverURL;
+export const baseURL = localURL;
 export const mediaPath = 'https://api.clicemails.com/';
 export const api = {
   /**
