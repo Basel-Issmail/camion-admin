@@ -18,6 +18,8 @@ export class DashboardComponent implements OnInit {
   tabChange($event) {
     const colors = ['#1e88e5', '#e07000', '#871F78', '#757575', '#d93025', '#3F704D', '#fff00f'];
     this.currentIndex = $event.index;
+    console.log($event);
+
 
     // @ts-ignore
     document.querySelector('mat-ink-bar').style.backgroundColor = colors[this.currentIndex];

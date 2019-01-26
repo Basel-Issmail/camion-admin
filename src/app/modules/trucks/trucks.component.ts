@@ -18,7 +18,7 @@ export class TrucksComponent implements OnInit {
   constructor(private trucksService: TrucksService, private actionEventsService: ActionEventsService) { }
 
   ngOnInit() {
-
+    document.querySelector('mat-ink-bar').style.backgroundColor = '#1e88e5';
     this.trucksService.getTrucks({ page: 0, limit: 20 }).subscribe(
       data => {
         this.tableContent = Object.assign({}, this.trucksService.flattenObjectRows(data));
