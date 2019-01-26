@@ -1,6 +1,39 @@
-<app-header></app-header>
+<mat-toolbar color="primary" class="topbar telative">
+  <!-- ============================================================== -->
+  <!-- Logo - style you can find in header.scss -->
+  <!-- ============================================================== -->
+  <div class="navbar-header">
+    <a class="navbar-brand" href="index.html">
+      <!-- Logo icon -->
+      <b>
+        <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+        <!-- Dark Logo icon -->
+        <!--<img src="assets/images/icon/Artboard 15.png" alt="homepage" class="dark-logo">-->
+        <!--&lt;!&ndash; Light Logo icon &ndash;&gt;-->
+        <!--<img src="assets/images/icon/Artboard 15.png" alt="homepage" class="light-logo">-->
+      </b>
+      <!--End Logo icon -->
+      <!-- Logo text -->
+      <span fxShow="false" fxShow.gt-xs>
+        <!-- dark Logo text -->
+        <img src="assets/images/icon/logo.png" alt="homepage" class="dark-logo">
+        <!-- Light Logo text -->
+        <img style="max-height: 62px;" src="assets/images/icon/logo.png" class="light-logo" alt="homepage">
+      </span> </a>
+  </div>
 
-
+  <span fxFlex></span>
+  <!-- ============================================================== -->
+  <!-- app header component - style you can find in header.scss / header.component.ts-->
+  <!-- ============================================================== -->
+  <app-header></app-header>
+  <!-- ============================================================== -->
+  <!-- Right sidebar toggle - style you can find in rightsidebar.component.scss -->
+  <!-- ============================================================== -->
+  <!--<button (click)="end.toggle()" mat-icon-button class="ml-xs overflow-visible">-->
+  <!--<mat-icon>settings</mat-icon>-->
+  <!--</button>-->
+</mat-toolbar>
 
 <div>
   <router-outlet>
