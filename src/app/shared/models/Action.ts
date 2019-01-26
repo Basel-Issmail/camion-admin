@@ -1,19 +1,5 @@
 export enum Action {
-  Add,
-  Duplicate,
-  Edit,
-  ChangePassword,
-  Remind,
-  Forget,
   Activate,
   Deactivate,
-  Delete,
-  Restore,
-  PermanentlyDelete,
-  DeleteDraft,
-  EditDraft,
-  Publish,
-  ViewProfile,
   Paginate,
-  ChangeOrder
 }

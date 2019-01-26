@@ -1,5 +1,5 @@
 <span [class.actionicon]="header">
-  <a matTooltip="View Profile" (click)="emitAction(selectedId ,action.ViewProfile)" id="{{rowId}}_view_profile" *ngIf="displayedActions.includes(action.ViewProfile)  && selectedId.length === 1">
+  <!-- <a matTooltip="View Profile" (click)="emitAction(selectedId ,action.ViewProfile)" id="{{rowId}}_view_profile" *ngIf="displayedActions.includes(action.ViewProfile)  && selectedId.length === 1">
     <mat-icon class="mat-small-icon">account_circle
     </mat-icon>
   </a>
@@ -52,12 +52,12 @@
   </a>
   <a matTooltip="Remove reminder" (click)="emitAction(selectedId ,action.Forget)" id="{{rowId}}_forget" *ngIf="displayedActions.includes(action.Forget) && (row.reminder || header)">
     <mat-icon class="mat-small-icon">alarm_off</mat-icon>
-  </a>
-  <a matTooltip="Activate" (click)="emitAction(selectedId ,action.Activate)" id="{{rowId}}_activate" *ngIf="displayedActions.includes(action.Activate) && (!row.active || header)">
+  </a> -->
+  <a matTooltip="Attiva" (click)="emitAction(selectedId ,action.Activate)" id="{{rowId}}_activate" *ngIf="displayedActions.includes(action.Activate) && (!row.approved || header)">
     <mat-icon class="mat-small-icon" [class.borderleft]="header">check_circle
     </mat-icon>
   </a>
-  <a matTooltip="Deactivate" (click)="emitAction(selectedId ,action.Deactivate)" id="{{rowId}}_deactivate" *ngIf="displayedActions.includes(action.Deactivate) && (row.active || header)">
+  <a matTooltip="Cancella" (click)="emitAction(selectedId ,action.Deactivate)" id="{{rowId}}_deactivate" *ngIf="displayedActions.includes(action.Deactivate) && (row.approved || header)">
     <mat-icon class="mat-small-icon">cancel</mat-icon>
   </a>
 </span>

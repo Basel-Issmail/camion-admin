@@ -3,7 +3,7 @@ import { Action } from 'src/app/shared/models/Action';
 import { tabsConfig } from 'src/config/config';
 
 export const tableConfig: TableContentConfig = {
-  displayActions: [],
+  displayActions: [Action.Activate, Action.Deactivate],
   index: tabsConfig.ALL_TAB_INDEX,
   tabType: tabsConfig.ALL_TYPE,
   displayCols: {
