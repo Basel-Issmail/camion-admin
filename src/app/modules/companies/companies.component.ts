@@ -16,7 +16,7 @@ export class CompaniesComponent implements OnInit {
   constructor(private companiesService: CompaniesService, private actionEventsService: ActionEventsService) { }
 
   ngOnInit() {
-    document.querySelector('mat-ink-bar').style.backgroundColor = '#e07000';
+    (<HTMLElement> document.querySelector('mat-ink-bar')).style.backgroundColor = '#e07000';
     this.companiesService.getCompanies({ page: 0, limit: 20 }).subscribe(
       data => {
         this.tableContent = Object.assign({}, this.companiesService.flattenObjectRows(data));
