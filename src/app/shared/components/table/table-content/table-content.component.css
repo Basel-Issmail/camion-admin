@@ -63,11 +63,6 @@
   color: #d93025 !important;
 }
 
-::ng-deep .mat-menu-content {
-  height: 400px !important;
-}
-
-
 ::ng-deep .base-line {
     display: flex;
     align-items: center;

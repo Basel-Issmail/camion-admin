@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(user)
       .subscribe(
         () => {
-          this.router.navigate([client.DASHBOARD]);
+          this.router.navigate([client.TRUCKS]);
         },
         error => this.message = 'Invalid email or password'
       );
