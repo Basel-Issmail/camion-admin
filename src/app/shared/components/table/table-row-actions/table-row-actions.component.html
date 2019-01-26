@@ -1,0 +1,63 @@
+<span [class.actionicon]="header">
+  <a matTooltip="View Profile" (click)="emitAction(selectedId ,action.ViewProfile)" id="{{rowId}}_view_profile" *ngIf="displayedActions.includes(action.ViewProfile)  && selectedId.length === 1">
+    <mat-icon class="mat-small-icon">account_circle
+    </mat-icon>
+  </a>
+
+  <a matTooltip="Duplicate" (click)="emitAction(selectedId ,action.Duplicate)" id="{{rowId}}_duplicate" *ngIf="displayedActions.includes(action.Duplicate) && selectedId.length === 1">
+    <mat-icon class="mat-small-icon" [class.borderleft]="header">file_copy
+    </mat-icon>
+  </a>
+
+  <a matTooltip="Edit" (click)="emitAction(selectedId ,action.Edit)" id="{{rowId}}_edit" *ngIf="displayedActions.includes(action.Edit)  && selectedId.length === 1">
+    <mat-icon class="mat-small-icon">edit
+    </mat-icon>
+  </a>
+
+  <a matTooltip="Edit" (click)="emitAction(selectedId ,action.EditDraft)" id="{{rowId}}_edit" *ngIf="displayedActions.includes(action.EditDraft)  && selectedId.length === 1">
+    <mat-icon class="mat-small-icon">edit
+    </mat-icon>
+  </a>
+
+  <a matTooltip="Change Password" (click)="emitAction(selectedId ,action.ChangePassword)" id="{{rowId}}change_password"
+    *ngIf="displayedActions.includes(action.ChangePassword)  && selectedId.length === 1">
+    <mat-icon class="mat-small-icon">lock
+    </mat-icon>
+  </a>
+
+  <a matTooltip="Delete" (click)="emitAction(selectedId ,action.Delete)" id="{{rowId}}_delete" *ngIf="displayedActions.includes(action.Delete)">
+    <mat-icon class="mat-small-icon" [class.borderleft]="header">delete
+    </mat-icon>
+  </a>
+
+  <a matTooltip="Delete" (click)="emitAction(selectedId ,action.DeleteDraft)" id="{{rowId}}_delete_draft" *ngIf="displayedActions.includes(action.DeleteDraft)">
+    <mat-icon class="mat-small-icon" [class.borderleft]="header">delete
+    </mat-icon>
+  </a>
+
+  <a matTooltip="Restore" (click)="emitAction(selectedId ,action.Restore)" id="{{rowId}}_restore" *ngIf="displayedActions.includes(action.Restore)">
+    <mat-icon class="mat-small-icon" [class.borderleft]="header">restore
+    </mat-icon>
+  </a>
+
+  <a matTooltip="Permanently Delete" (click)="emitAction(selectedId ,action.PermanentlyDelete)" id="{{rowId}}_permanently_delete"
+    *ngIf="displayedActions.includes(action.PermanentlyDelete)">
+    <mat-icon class="mat-small-icon">delete_forever
+    </mat-icon>
+  </a>
+
+  <a matTooltip="Remind" (click)="emitAction(selectedId ,action.Remind)" id="{{rowId}}_remind" *ngIf="displayedActions.includes(action.Remind) && (!row.reminder || header)">
+    <mat-icon class="mat-small-icon" [class.borderleft]="header">alarm_on
+    </mat-icon>
+  </a>
+  <a matTooltip="Remove reminder" (click)="emitAction(selectedId ,action.Forget)" id="{{rowId}}_forget" *ngIf="displayedActions.includes(action.Forget) && (row.reminder || header)">
+    <mat-icon class="mat-small-icon">alarm_off</mat-icon>
+  </a>
+  <a matTooltip="Activate" (click)="emitAction(selectedId ,action.Activate)" id="{{rowId}}_activate" *ngIf="displayedActions.includes(action.Activate) && (!row.active || header)">
+    <mat-icon class="mat-small-icon" [class.borderleft]="header">check_circle
+    </mat-icon>
+  </a>
+  <a matTooltip="Deactivate" (click)="emitAction(selectedId ,action.Deactivate)" id="{{rowId}}_deactivate" *ngIf="displayedActions.includes(action.Deactivate) && (row.active || header)">
+    <mat-icon class="mat-small-icon">cancel</mat-icon>
+  </a>
+</span>

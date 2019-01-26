@@ -1,0 +1,125 @@
+<div fxLayout="row" fxLayoutWrap="wrap" style="padding: 8px 0">
+  <div fxFlex.gt-md="50" fxFlex="100" class="base-line">
+
+    <a matTooltip="Add New Item" (click)="addNewItem()">
+      <mat-icon class="action-icon" style="color: #1e88e5;
+            font-size: 28px;">add_box
+      </mat-icon>
+    </a>
+
+    <a matTooltip="Displayed Columns" [matMenuTriggerFor]="menu">
+      <mat-icon class="action-icon">more_vert</mat-icon>
+    </a>
+
+    <mat-menu #menu="matMenu">
+      <span mat-menu-item [disableRipple]="true" *ngFor="let col of tableContentConfig.displayCols.COLS">
+        <mat-checkbox [disableRipple]="true" #checkbox (change)="selectColumn(col, checkbox)" [checked]="displayedColumnsCopy.includes(col)">
+          {{col}}
+        </mat-checkbox>
+      </span>
+    </mat-menu>
+
+    <app-table-row-actions *ngIf="showHeaderActions" [hidden]="selection.selected.length === 0" [selectedId]="selection.selected"
+      [displayedActions]="tableContentConfig.displayActions" (actionEmitter)="emitAction($event)" [header]="true"></app-table-row-actions>
+  </div>
+
+
+  <div fxFlex.gt-md="18" fxFlex="100" fxLayoutAlign="center">
+    <div class="search-section">
+      <span style="max-width: 8%; margin-right: 4%; margin-left: 1%;" class="base-line">
+        <mat-icon>search</mat-icon>
+      </span>
+      <span style="width: 100%;">
+        <input type="text" placeholder="Search" class="search-button" (keyup)="applyFilter($event.target.value)">
+      </span>
+    </div>
+  </div>
+
+  <div *ngIf="showPagination" fxFlex.gt-md="32" fxFlex="100" fxLayoutAlign="center">
+    <mat-paginator (page)="page($event)" [length]="(tableContentData)? ((tableContentData['total'])? tableContentData['total'] : tableContentData['data'].length): 0"
+      [pageIndex]="tableContentData? (tableContentData[current_page] - 1) : 0" [pageSize]="tableContentData? ((tableContentData['per_page'])? tableContentData['per_page'] : tableContentData['data'].length) : 50"
+      [pageSizeOptions]="[5, 25, 50, 100]"></mat-paginator>
+  </div>
+</div>
+<!-- <mat-divider></mat-divider> -->
+
+<!-- <div fxLayout="row" fxLayoutWrap="wrap" *ngIf="selectAllTable[currentIndex] || selectAllPage[currentIndex]">
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" class="message-section">
+    <div *ngIf="selectAllPage[currentIndex]">All news on this page are selected.
+      <button mat-stroked-button color="primary">Select all {{paginator.length}} news</button>
+    </div>
+    <div *ngIf="selectAllTable[currentIndex]">All Table Selected</div>
+  </div>
+</div> -->
+
+<!-- <mat-divider *ngIf="selectAllTable[currentIndex] || selectAllPage[currentIndex]"></mat-divider> -->
+<hr style="margin: 0">
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <div class="table-responsive">
+      <mat-table [dataSource]="(tableContentData)? tableContentData.data: []" matSort droppable>
+        <!-- Select Column -->
+        <ng-container *ngIf="showHeaderActions" matColumnDef="select">
+          <mat-header-cell *matHeaderCellDef>
+            <mat-checkbox #ref [disabled]="tableContentData && !tableContentData.data.length" (change)="$event ? masterToggle(ref) : null"
+              [indeterminate]="selection.selected.length > 0 && !isAllSelected()" [checked]="isAllSelected()"
+              [disableRipple]="true">
+            </mat-checkbox>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? toggle(row) : null" [checked]="selection.isSelected(row.id)"
+              [disableRipple]="true">
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
+
+        <!-- active column -->
+        <ng-container *ngIf="tableContentConfig.specialLabels.includes('active')" matColumnDef="active">
+          <mat-header-cell *matHeaderCellDef>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <mat-chip-list>
+              <a *ngIf="row.active">
+                <mat-chip class="active-tag">Active</mat-chip>
+              </a>
+              <a *ngIf="!row.active">
+                <mat-chip class="inactive-tag">Inactive</mat-chip>
+              </a>
+            </mat-chip-list>
+          </mat-cell>
+        </ng-container>
+
+        <!-- remind column -->
+        <ng-container *ngIf="tableContentConfig.specialLabels.includes('reminder')" matColumnDef="reminder">
+          <mat-header-cell *matHeaderCellDef>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <a *ngIf="row.reminder">
+              <mat-icon class="mat-small-icon" style="color: #e07000">alarm_on</mat-icon>
+            </a>
+          </mat-cell>
+        </ng-container>
+
+        <!-- var Column -->
+        <ng-container *ngFor="let key of tableContentConfig.displayCols.COLS; let i = index;" matColumnDef="{{key}}">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>{{tableContentConfig.displayCols.LABELS[i]}}</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <span [style.margin-left.px]="row.count * (i == 0 ? 1 : 0)">{{row[key]}}</span>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <app-table-row-actions [hidden]="row.id !== selectedId" [selectedId]="[selectedId]" [row]="row"
+              [displayedActions]="tableContentConfig.displayActions" (actionEmitter)="emitAction($event)"></app-table-row-actions>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsCopy; sticky: true"></mat-header-row>
+        <ng-container>
+          <mat-row *matRowDef="let row; columns: displayedColumnsCopy" (mouseenter)="selectedId = row.id"></mat-row>
+        </ng-container>
+      </mat-table>
+    </div>
+  </div>
+</div>
