@@ -18,7 +18,7 @@ export class TrucksComponent implements OnInit {
 
     this.trucksService.getTrucks().subscribe(
       data => {
-        this.tableContent = Object.assign({}, data);
+        this.tableContent = Object.assign({}, this.trucksService.flattenObjectRows(data));
       }
     );
   }
