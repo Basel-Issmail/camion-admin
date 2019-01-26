@@ -8,8 +8,9 @@ import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './modules/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { ToeknInterceptor } from './shared/interceptors/token.interceptor';
 import { SpinnerInterceprotService } from './shared/interceptors/spinner-interceprot';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SpinnerInterceprotService } from './shared/interceptors/spinner-interce
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceprotService, multi: true, },
+    { provide: HTTP_INTERCEPTORS, useClass: ToeknInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

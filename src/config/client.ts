@@ -1,5 +1,5 @@
 export const client = {
-  LOGIN: '/auth/login',
+  LOGIN: '/login',
   ERROR: '/error',
   FORGOT: '/auth/forgot-password',
   DASHBOARD: '/dashboard',
