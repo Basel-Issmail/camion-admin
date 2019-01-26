@@ -15,9 +15,11 @@ export class CompaniesService {
   }
 
   flattenObjectRows(data) {
-    data['rows'].forEach(truck => {
-      truck['email'] = truck['user']['email'];
-      truck['telephone'] = truck['user']['telephone'];
+    data['rows'].forEach(company => {
+      company['companyId'] = company['id'];
+      company['id'] = company['user']['id'];
+      company['email'] = company['user']['email'];
+      company['telephone'] = company['user']['telephone'];
     });
     return data;
   }

@@ -13,7 +13,7 @@ export const api = {
   /**
    * Users
    */
-
+  APPROVE: baseURL + 'user/changeApproved',
   LOGIN: baseURL + 'user/login',
 
   /*

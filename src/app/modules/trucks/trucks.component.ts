@@ -2,8 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { tableConfig } from './config/trucks-config';
 import { TrucksService } from './trucks.service';
 import { Action } from 'src/app/shared/models/Action';
-import { Subscription } from 'rxjs';
+import { Subscription, concat } from 'rxjs';
 import { ActionEventsService } from 'src/app/shared/components/table/action-events.service';
+import { UserService } from 'src/app/shared/services/user.service';
+import { last } from 'rxjs/operators';
 
 @Component({
   selector: 'app-trucks',
@@ -15,7 +17,7 @@ export class TrucksComponent implements OnInit, OnDestroy {
   tableConfig = tableConfig;
   tableContent;
   subscriptions: Subscription[] = [];
-  constructor(private trucksService: TrucksService, private actionEventsService: ActionEventsService) { }
+  constructor(private trucksService: TrucksService, private actionEventsService: ActionEventsService, private userService: UserService) { }
 
   ngOnInit() {
     (<HTMLElement>document.querySelector('mat-ink-bar')).style.backgroundColor = '#1e88e5';
@@ -39,6 +41,12 @@ export class TrucksComponent implements OnInit, OnDestroy {
         switch (entry['action']) {
           case Action.Paginate:
             observableAction = this.trucksService.getTrucks(params);
+            break;
+          case Action.Activate:
+            observableAction = concat(this.userService.activateUsers(ids), this.trucksService.getTrucks(params)).pipe(last());
+            break;
+          case Action.Deactivate:
+            observableAction = concat(this.userService.deactivateUsers(ids), this.trucksService.getTrucks(params)).pipe(last());
             break;
           default:
             break;

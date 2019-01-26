@@ -79,10 +79,10 @@
           </mat-header-cell>
           <mat-cell *matCellDef="let row">
             <mat-chip-list>
-              <a *ngIf="row.active">
+              <a *ngIf="row.approved">
                 <mat-chip class="active-tag">Active</mat-chip>
               </a>
-              <a *ngIf="!row.active">
+              <a *ngIf="!row.approved">
                 <mat-chip class="inactive-tag">Inactive</mat-chip>
               </a>
             </mat-chip-list>

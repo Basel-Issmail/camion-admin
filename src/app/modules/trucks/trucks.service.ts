@@ -16,6 +16,9 @@ export class TrucksService {
 
   flattenObjectRows(data) {
     data['rows'].forEach(truck => {
+      truck['truckId'] = truck['id'];
+      truck['id'] = truck['user']['id'];
+      truck['approved'] = truck['user']['approved'];
       truck['email'] = truck['user']['email'];
       truck['telephone'] = truck['user']['telephone'];
     });
