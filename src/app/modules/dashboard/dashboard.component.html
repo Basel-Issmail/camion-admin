@@ -52,7 +52,7 @@
                   &nbsp;&nbsp;Lista utenti
                 </span>
               </a>
-              <a mat-tab-link>
+              <a mat-tab-link [routerLink]="client.COMPANIES">
                 <span style="display: contents" [class.company-tab]="currentIndex === 1">
                   <mat-icon class="mat-tab-icon">location_city</mat-icon>
                   &nbsp;&nbsp;Lista aziende

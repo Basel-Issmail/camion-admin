@@ -11,13 +11,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToeknInterceptor } from './shared/interceptors/token.interceptor';
 import { SpinnerInterceprotService } from './shared/interceptors/spinner-interceprot';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
-import { CompaniesComponent } from './modules/companies/companies.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CompaniesComponent,
   ],
   imports: [
     BrowserModule,

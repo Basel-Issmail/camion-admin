@@ -5,6 +5,7 @@ export const client = {
   DASHBOARD: '/dashboard',
 
   TRUCKS: '/dashboard/trucks',
+  COMPANIES: '/dashboard/companies',
 
   PROFILE: '/dashboard/profile',
   EDIT_PROFILE: '/dashboard/edit-profile',
