@@ -48,7 +48,7 @@
             <mat-tab-group mat-stretch-tabs (selectedTabChange)="tabChange($event)">
               <mat-tab>
                 <ng-template mat-tab-label>
-                  <span style="display: contents" [class.all]="currentIndex === 0">
+                  <span style="display: contents" [class.truck-tab]="currentIndex === 0">
 
 
                     <mat-icon class="mat-tab-icon">face</mat-icon>
@@ -58,21 +58,25 @@
               </mat-tab>
               <mat-tab>
                 <ng-template mat-tab-label>
-                  <span style="display: contents" [class.reminded]="currentIndex === 1">
+                  <span style="display: contents" [class.company-tab]="currentIndex === 1">
                     <mat-icon class="mat-tab-icon">location_city</mat-icon>
                     &nbsp;&nbsp;Lista aziende
                   </span>
                 </ng-template>
               </mat-tab>
+
               <mat-tab>
                 <ng-template mat-tab-label>
-                  <mat-icon class="mat-tab-icon">assessment</mat-icon>
-                  &nbsp;&nbsp;statistiche
+                  <span style="display: contents" [class.statistics-tab]="currentIndex === 2">
+                    <mat-icon class="mat-tab-icon">assessment</mat-icon>
+                    &nbsp;&nbsp;statistiche
+                  </span>
                 </ng-template>
               </mat-tab>
+
               <mat-tab>
                 <ng-template mat-tab-label>
-                  <span style="display: contents" [class.deleted]="currentIndex === 2">
+                  <span style="display: contents" [class.ads-tab]="currentIndex === 3">
                     <mat-icon class="mat-tab-icon">local_atm</mat-icon>
                     &nbsp;&nbsp;pubblicita
                   </span>
@@ -81,16 +85,16 @@
 
               <mat-tab>
                 <ng-template mat-tab-label>
-                  <span style="display: contents" [class.deleted]="currentIndex === 3">
+                  <span style="display: contents" [class.pdf-tab]="currentIndex === 4">
                     <mat-icon class="mat-tab-icon">description</mat-icon>
-                    &nbsp;&nbsp;caica pdf
+                    &nbsp;&nbsp;carica PDF
                   </span>
                 </ng-template>
               </mat-tab>
 
               <mat-tab>
                 <ng-template mat-tab-label>
-                  <span style="display: contents" [class.deleted]="currentIndex === 4">
+                  <span style="display: contents" [class.feedback-tab]="currentIndex === 5">
                     <mat-icon class="mat-tab-icon">insert_comment</mat-icon>
                     &nbsp;&nbsp;feedback
                   </span>
@@ -99,7 +103,7 @@
 
               <mat-tab>
                 <ng-template mat-tab-label>
-                  <span style="display: contents" [class.deleted]="currentIndex === 5">
+                  <span style="display: contents" [class.notification-tab]="currentIndex === 6">
                     <mat-icon class="mat-tab-icon">notification_important</mat-icon>
                     &nbsp;&nbsp;notifiche
                   </span>
