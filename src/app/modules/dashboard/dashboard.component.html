@@ -35,65 +35,72 @@
   <!--</button>-->
 </mat-toolbar>
 
-<div>
-  <router-outlet>
-    <div style="height: 4px !important;">
-      <mat-progress-bar *ngIf="spinnerService.isLoading" style="height: 100% !important;" mode="indeterminate"></mat-progress-bar>
-    </div>
-
-    <mat-card>
-      <mat-card-content>
-        <div fxLayout="row" fxLayoutWrap="wrap">
-          <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-            <nav mat-tab-nav-bar mat-stretch-tabs>
-              <a mat-tab-link [routerLink]="client.TRUCKS" routerLinkActive routerLinkActive="truck-tab" #truck="routerLinkActive" [active]="truck.isActive">
-                <span style="display: contents">
-                  <mat-icon class="mat-tab-icon">face</mat-icon>
-                  &nbsp;&nbsp;Lista utenti
-                </span>
-              </a>
-              <a mat-tab-link [routerLink]="client.COMPANIES" routerLinkActive="company-tab" #company="routerLinkActive" [active]="company.isActive">
-                <span style="display: contents">
-                  <mat-icon class="mat-tab-icon">location_city</mat-icon>
-                  &nbsp;&nbsp;Lista aziende
-                </span>
-              </a>
-              <a mat-tab-link>
-                <span style="display: contents" [class.statistics-tab]="currentIndex === 2">
-                  <mat-icon class="mat-tab-icon">assessment</mat-icon>
-                  &nbsp;&nbsp;statistiche
-                </span>
-              </a>
-              <a mat-tab-link>
-                <span style="display: contents" [class.ads-tab]="currentIndex === 3">
-                  <mat-icon class="mat-tab-icon">local_atm</mat-icon>
-                  &nbsp;&nbsp;pubblicita
-                </span>
-              </a>
-              <a mat-tab-link>
-                <span style="display: contents" [class.pdf-tab]="currentIndex === 4">
-                  <mat-icon class="mat-tab-icon">description</mat-icon>
-                  &nbsp;&nbsp;carica PDF
-                </span>
-              </a>
-              <a mat-tab-link>
-                <span style="display: contents" [class.feedback-tab]="currentIndex === 5">
-                  <mat-icon class="mat-tab-icon">insert_comment</mat-icon>
-                  &nbsp;&nbsp;feedback
-                </span>
-              </a>
-              <a mat-tab-link>
-                <span style="display: contents" [class.notification-tab]="currentIndex === 6">
-                  <mat-icon class="mat-tab-icon">notification_important</mat-icon>
-                  &nbsp;&nbsp;notifiche
-                </span>
-              </a>
-            </nav>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-
-
-  </router-outlet>
+<div style="height: 4px !important;">
+  <mat-progress-bar *ngIf="spinnerService.isLoading" style="height: 100% !important;" mode="indeterminate"></mat-progress-bar>
 </div>
+
+<mat-card>
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutWrap="wrap">
+      <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <nav mat-tab-nav-bar mat-stretch-tabs>
+          <a mat-tab-link [routerLink]="client.TRUCKS" routerLinkActive routerLinkActive="truck-tab" #truck="routerLinkActive"
+            [active]="truck.isActive">
+            <span style="display: contents">
+              <mat-icon class="mat-tab-icon">face</mat-icon>
+              &nbsp;&nbsp;Lista utenti
+            </span>
+          </a>
+          <a mat-tab-link [routerLink]="client.COMPANIES" routerLinkActive="company-tab" #company="routerLinkActive"
+            [active]="company.isActive">
+            <span style="display: contents">
+              <mat-icon class="mat-tab-icon">location_city</mat-icon>
+              &nbsp;&nbsp;Lista aziende
+            </span>
+          </a>
+          <a mat-tab-link>
+            <span style="display: contents" [class.statistics-tab]="currentIndex === 2">
+              <mat-icon class="mat-tab-icon">assessment</mat-icon>
+              &nbsp;&nbsp;statistiche
+            </span>
+          </a>
+          <a mat-tab-link>
+            <span style="display: contents" [class.ads-tab]="currentIndex === 3">
+              <mat-icon class="mat-tab-icon">local_atm</mat-icon>
+              &nbsp;&nbsp;pubblicita
+            </span>
+          </a>
+          <a mat-tab-link>
+            <span style="display: contents" [class.pdf-tab]="currentIndex === 4">
+              <mat-icon class="mat-tab-icon">description</mat-icon>
+              &nbsp;&nbsp;carica PDF
+            </span>
+          </a>
+          <a mat-tab-link>
+            <span style="display: contents" [class.feedback-tab]="currentIndex === 5">
+              <mat-icon class="mat-tab-icon">insert_comment</mat-icon>
+              &nbsp;&nbsp;feedback
+            </span>
+          </a>
+          <a mat-tab-link>
+            <span style="display: contents" [class.notification-tab]="currentIndex === 6">
+              <mat-icon class="mat-tab-icon">notification_important</mat-icon>
+              &nbsp;&nbsp;notifiche
+            </span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+<mat-card>
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutWrap="wrap">
+      <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
