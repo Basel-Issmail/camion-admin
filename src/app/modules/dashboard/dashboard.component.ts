@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpinnerService } from 'src/app/shared/services/spinner.service';
+import { client } from 'src/config/client';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import { SpinnerService } from 'src/app/shared/services/spinner.service';
 })
 export class DashboardComponent implements OnInit {
   currentIndex = 0;
-
+  client = client;
   constructor(public spinnerService: SpinnerService) { }
 
   ngOnInit() {
