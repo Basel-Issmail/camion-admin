@@ -12,9 +12,9 @@
     </a>
 
     <mat-menu #menu="matMenu">
-      <span mat-menu-item [disableRipple]="true" *ngFor="let col of tableContentConfig.displayCols.COLS">
+      <span mat-menu-item [disableRipple]="true" *ngFor="let col of tableContentConfig.displayCols.COLS; index as i">
         <mat-checkbox [disableRipple]="true" #checkbox (change)="selectColumn(col, checkbox)" [checked]="displayedColumnsCopy.includes(col)">
-          {{col}}
+          {{tableContentConfig.displayCols.LABELS[i]}}
         </mat-checkbox>
       </span>
     </mat-menu>
