@@ -18,6 +18,7 @@ export class CompaniesService {
     data['rows'].forEach(company => {
       company['companyId'] = company['id'];
       company['id'] = company['user']['id'];
+      company['approved'] = company['user']['approved'];
       company['email'] = company['user']['email'];
       company['telephone'] = company['user']['telephone'];
     });
