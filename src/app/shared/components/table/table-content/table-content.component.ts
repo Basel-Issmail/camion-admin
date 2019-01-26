@@ -71,12 +71,12 @@ export class TableContentComponent implements OnInit, OnDestroy {
    */
   isAllSelected() {
     if (!this.tableContentData) { return false; }
-    return (this.selection.selected.length === this.tableContentData.data.length && this.tableContentData.data.length > 0);
+    return (this.selection.selected.length === this.tableContentData.rows.length && this.tableContentData.rows.length > 0);
   }
 
   selectAll() {
     if (!this.tableContentData) { return false; }
-    this.tableContentData.data.forEach(row => this.selection.toggle(row.id));
+    this.tableContentData.rows.forEach(row => this.selection.toggle(row.id));
   }
 
   clearAll() {

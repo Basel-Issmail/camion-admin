@@ -15,4 +15,9 @@ export const api = {
    */
 
   LOGIN: baseURL + 'user/login',
+
+  /*
+  * Trucks
+  */
+  TRUCKS_LIST: baseURL + 'truck/list'
 };

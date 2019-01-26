@@ -36,8 +36,8 @@
   </div>
 
   <div *ngIf="showPagination" fxFlex.gt-md="32" fxFlex="100" fxLayoutAlign="center">
-    <mat-paginator (page)="page($event)" [length]="(tableContentData)? ((tableContentData['total'])? tableContentData['total'] : tableContentData['data'].length): 0"
-      [pageIndex]="tableContentData? (tableContentData[current_page] - 1) : 0" [pageSize]="tableContentData? ((tableContentData['per_page'])? tableContentData['per_page'] : tableContentData['data'].length) : 50"
+    <mat-paginator (page)="page($event)" [length]="(tableContentData)? ((tableContentData['total'])? tableContentData['total'] : tableContentData['rows'].length): 0"
+      [pageIndex]="tableContentData? (tableContentData[current_page] - 1) : 0" [pageSize]="tableContentData? ((tableContentData['per_page'])? tableContentData['per_page'] : tableContentData['rows'].length) : 50"
       [pageSizeOptions]="[5, 25, 50, 100]"></mat-paginator>
   </div>
 </div>
@@ -57,11 +57,11 @@
 <div fxLayout="row" fxLayoutWrap="wrap">
   <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
     <div class="table-responsive">
-      <mat-table [dataSource]="(tableContentData)? tableContentData.data: []" matSort droppable>
+      <mat-table [dataSource]="(tableContentData)? tableContentData.rows: []" matSort droppable>
         <!-- Select Column -->
         <ng-container *ngIf="showHeaderActions" matColumnDef="select">
           <mat-header-cell *matHeaderCellDef>
-            <mat-checkbox #ref [disabled]="tableContentData && !tableContentData.data.length" (change)="$event ? masterToggle(ref) : null"
+            <mat-checkbox #ref [disabled]="tableContentData && !tableContentData.rows.length" (change)="$event ? masterToggle(ref) : null"
               [indeterminate]="selection.selected.length > 0 && !isAllSelected()" [checked]="isAllSelected()"
               [disableRipple]="true">
             </mat-checkbox>

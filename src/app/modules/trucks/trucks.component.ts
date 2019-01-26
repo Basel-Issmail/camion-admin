@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { tableConfig } from './config/trucks-config';
+import { TrucksService } from './trucks.service';
 
 @Component({
   selector: 'app-trucks',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrucksComponent implements OnInit {
 
-  constructor() { }
+  tableConfig = tableConfig;
+  tableContent;
+
+  constructor(private trucksService: TrucksService) { }
 
   ngOnInit() {
+
+    this.trucksService.getTrucks().subscribe(
+      data => {
+        this.tableContent = Object.assign({}, data);
+      }
+    );
   }
 
 }
