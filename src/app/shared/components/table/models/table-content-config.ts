@@ -15,6 +15,6 @@ export interface DisplayColsConfig {
 }
 
 export enum specialLabels {
-    Active = 'active',
+    Approved = 'approved',
     Reminder = 'reminder',
 }

@@ -140,9 +140,9 @@ export class TableContentComponent implements OnInit, OnDestroy {
     this.tableContentData.current_page = page;
     this.tableContentData.per_page = pageSize;
   }
-  addNewItem() {
-    this.emitAction({ action: Action.Add, ids: [] });
-  }
+  // addNewItem() {
+  //   this.emitAction({ action: Action.Add, ids: [] });
+  // }
 
   emitAction({ ids, action }) {
     const params = this.getParams();

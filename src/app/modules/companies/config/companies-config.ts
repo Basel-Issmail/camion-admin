@@ -13,5 +13,5 @@ export const tableConfig: TableContentConfig = {
     COLS: ['name', 'vat', 'email', 'telephone', 'language', 'car_brands', 'service_types',
     'createdAt', 'street', 'number', 'cap', 'requests_received', 'requests_approved'],
   },
-  specialLabels: [],
+  specialLabels: [specialLabels.Approved],
 };
