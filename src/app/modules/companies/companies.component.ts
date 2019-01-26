@@ -6,6 +6,7 @@ import { CompaniesService } from './companies.service';
 import { Action } from 'src/app/shared/models/Action';
 import { UserService } from 'src/app/shared/services/user.service';
 import { last } from 'rxjs/operators';
+import { MessageService } from 'src/app/shared/services/message.service';
 
 @Component({
   selector: 'app-companies',
@@ -17,7 +18,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
   tableContent;
   subscriptions: Subscription[] = [];
   constructor(private companiesService: CompaniesService, private actionEventsService: ActionEventsService,
-    private userService: UserService) { }
+    private userService: UserService, private messageService: MessageService) { }
 
   ngOnInit() {
     (<HTMLElement>document.querySelector('mat-ink-bar')).style.backgroundColor = '#e07000';
@@ -52,12 +53,14 @@ export class CompaniesComponent implements OnInit, OnDestroy {
         if (observableAction !== null) {
           observableAction.subscribe(data => {
             this.tableContent = Object.assign({}, this.companiesService.flattenObjectRows(data));
-
+            if (entry['action'] !== Action.Paginate) {
+              this.messageService.display('Companies Updated Successfully');
+            }
           },
             error => {
-
-              console.log('error');
-
+              console.log(error);
+              this.messageService.display('Something is wrong, Try later.',
+                'danger', 'center', 'top');
             },
           );
         }

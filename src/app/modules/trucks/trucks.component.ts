@@ -6,6 +6,7 @@ import { Subscription, concat } from 'rxjs';
 import { ActionEventsService } from 'src/app/shared/components/table/action-events.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { last } from 'rxjs/operators';
+import { MessageService } from 'src/app/shared/services/message.service';
 
 @Component({
   selector: 'app-trucks',
@@ -17,7 +18,8 @@ export class TrucksComponent implements OnInit, OnDestroy {
   tableConfig = tableConfig;
   tableContent;
   subscriptions: Subscription[] = [];
-  constructor(private trucksService: TrucksService, private actionEventsService: ActionEventsService, private userService: UserService) { }
+  constructor(private trucksService: TrucksService, private actionEventsService: ActionEventsService,
+    private userService: UserService, private messageService: MessageService) { }
 
   ngOnInit() {
     (<HTMLElement>document.querySelector('mat-ink-bar')).style.backgroundColor = '#1e88e5';
@@ -54,12 +56,14 @@ export class TrucksComponent implements OnInit, OnDestroy {
         if (observableAction !== null) {
           observableAction.subscribe(data => {
             this.tableContent = Object.assign({}, this.trucksService.flattenObjectRows(data));
-
+            if (entry['action'] !== Action.Paginate) {
+              this.messageService.display('Trucks Updated Successfully');
+            }
           },
             error => {
-
-              console.log('error');
-
+              console.log(error);
+              this.messageService.display('Something is wrong, Try later.',
+                'danger', 'center', 'top');
             },
           );
         }
