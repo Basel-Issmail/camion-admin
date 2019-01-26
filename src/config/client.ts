@@ -3,6 +3,9 @@ export const client = {
   ERROR: '/error',
   FORGOT: '/auth/forgot-password',
   DASHBOARD: '/dashboard',
+
+  TRUCKS: '/dashboard/trucks',
+
   PROFILE: '/dashboard/profile',
   EDIT_PROFILE: '/dashboard/edit-profile',
   MEMBERS: '/dashboard/members',
