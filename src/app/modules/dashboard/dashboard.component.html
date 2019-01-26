@@ -45,74 +45,50 @@
       <mat-card-content>
         <div fxLayout="row" fxLayoutWrap="wrap">
           <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-            <mat-tab-group mat-stretch-tabs (selectedTabChange)="tabChange($event)">
-              <mat-tab>
-                <ng-template mat-tab-label>
-                  <span style="display: contents" [class.truck-tab]="currentIndex === 0">
-
-
-                    <mat-icon class="mat-tab-icon">face</mat-icon>
-                    &nbsp;&nbsp;Lista utenti
-                  </span>
-                </ng-template>
-              </mat-tab>
-              <mat-tab>
-                <ng-template mat-tab-label>
-                  <span style="display: contents" [class.company-tab]="currentIndex === 1">
-                    <mat-icon class="mat-tab-icon">location_city</mat-icon>
-                    &nbsp;&nbsp;Lista aziende
-                  </span>
-                </ng-template>
-              </mat-tab>
-
-              <mat-tab>
-                <ng-template mat-tab-label>
+            <nav mat-tab-nav-bar mat-stretch-tabs (selectedTabChange)="tabChange($event)">
+              <a mat-tab-link>
+                <span style="display: contents" [class.truck-tab]="currentIndex === 0">
+                  <mat-icon class="mat-tab-icon">face</mat-icon>
+                  &nbsp;&nbsp;Lista utenti
+                </span>
+              </a>
+              <a mat-tab-link>
+                <span style="display: contents" [class.company-tab]="currentIndex === 1">
+                  <mat-icon class="mat-tab-icon">location_city</mat-icon>
+                  &nbsp;&nbsp;Lista aziende
+                </span>
+              </a>
+              <a mat-tab-link>
                   <span style="display: contents" [class.statistics-tab]="currentIndex === 2">
                     <mat-icon class="mat-tab-icon">assessment</mat-icon>
                     &nbsp;&nbsp;statistiche
                   </span>
-                </ng-template>
-              </mat-tab>
-
-              <mat-tab>
-                <ng-template mat-tab-label>
+              </a>
+              <a mat-tab-link>
                   <span style="display: contents" [class.ads-tab]="currentIndex === 3">
                     <mat-icon class="mat-tab-icon">local_atm</mat-icon>
                     &nbsp;&nbsp;pubblicita
                   </span>
-                </ng-template>
-              </mat-tab>
-
-              <mat-tab>
-                <ng-template mat-tab-label>
+              </a>
+              <a mat-tab-link>
                   <span style="display: contents" [class.pdf-tab]="currentIndex === 4">
                     <mat-icon class="mat-tab-icon">description</mat-icon>
                     &nbsp;&nbsp;carica PDF
                   </span>
-                </ng-template>
-              </mat-tab>
-
-              <mat-tab>
-                <ng-template mat-tab-label>
+              </a>
+              <a mat-tab-link>
                   <span style="display: contents" [class.feedback-tab]="currentIndex === 5">
                     <mat-icon class="mat-tab-icon">insert_comment</mat-icon>
                     &nbsp;&nbsp;feedback
                   </span>
-                </ng-template>
-              </mat-tab>
-
-              <mat-tab>
-                <ng-template mat-tab-label>
+              </a>
+              <a mat-tab-link>
                   <span style="display: contents" [class.notification-tab]="currentIndex === 6">
                     <mat-icon class="mat-tab-icon">notification_important</mat-icon>
                     &nbsp;&nbsp;notifiche
                   </span>
-                </ng-template>
-              </mat-tab>
-
-
-
-            </mat-tab-group>
+              </a>
+            </nav>
           </div>
         </div>
       </mat-card-content>
