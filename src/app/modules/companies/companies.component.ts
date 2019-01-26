@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { tableConfig } from './config/companies-config';
 import { Subscription, concat } from 'rxjs';
 import { ActionEventsService } from 'src/app/shared/components/table/action-events.service';
@@ -12,7 +12,7 @@ import { last } from 'rxjs/operators';
   templateUrl: './companies.component.html',
   styleUrls: ['./companies.component.scss']
 })
-export class CompaniesComponent implements OnInit {
+export class CompaniesComponent implements OnInit, OnDestroy {
   tableConfig = tableConfig;
   tableContent;
   subscriptions: Subscription[] = [];
@@ -63,6 +63,10 @@ export class CompaniesComponent implements OnInit {
         }
       }
     ));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
 }
