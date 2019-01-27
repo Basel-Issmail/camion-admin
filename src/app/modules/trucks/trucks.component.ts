@@ -35,9 +35,6 @@ export class TrucksComponent implements OnInit, OnDestroy {
     fromEvent(this.searchInput.nativeElement, 'keyup').pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      tap(() => {
-        console.log(this.criteria);
-      }),
       map((event: any) => event.target.value),
       switchMap(query => this.trucksService.searchTrucks(query, this.criteria))
     ).subscribe(data => {
@@ -94,11 +91,7 @@ export class TrucksComponent implements OnInit, OnDestroy {
   }
 
   resetSearch() {
-    console.log(this.keywords);
-
     this.keywords = '';
-
-    console.log(this.keywords);
   }
 
   ngOnDestroy(): void {

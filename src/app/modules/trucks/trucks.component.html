@@ -22,7 +22,7 @@
                 <mat-icon>search</mat-icon>
             </span>
             <span style="width: 100%;">
-                <input type="text" [(ngModel)]="keywords" placeholder="Search" class="search-button" #searchInput>
+                <input type="text" [disabled]="!criteria" [(ngModel)]="keywords" placeholder="Search" class="search-button" #searchInput>
             </span>
         </div>
     </div>

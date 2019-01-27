@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { tableConfig } from './config/companies-config';
-import { Subscription, concat } from 'rxjs';
+import { Subscription, concat, fromEvent } from 'rxjs';
 import { ActionEventsService } from 'src/app/shared/components/table/action-events.service';
 import { CompaniesService } from './companies.service';
 import { Action } from 'src/app/shared/models/Action';
 import { UserService } from 'src/app/shared/services/user.service';
-import { last } from 'rxjs/operators';
+import { last, debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { MessageService } from 'src/app/shared/services/message.service';
 
 @Component({
@@ -14,8 +14,11 @@ import { MessageService } from 'src/app/shared/services/message.service';
   styleUrls: ['./companies.component.scss']
 })
 export class CompaniesComponent implements OnInit, OnDestroy {
+  @ViewChild('searchInput') searchInput;
   tableConfig = tableConfig;
   tableContent;
+  criteria;
+  keywords = '';
   subscriptions: Subscription[] = [];
   constructor(private companiesService: CompaniesService, private actionEventsService: ActionEventsService,
     private userService: UserService, private messageService: MessageService) { }
@@ -27,6 +30,23 @@ export class CompaniesComponent implements OnInit, OnDestroy {
         this.tableContent = Object.assign({}, this.companiesService.flattenObjectRows(data));
       }
     );
+
+    // search
+    fromEvent(this.searchInput.nativeElement, 'keyup').pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      map((event: any) => event.target.value),
+      switchMap(query => this.companiesService.searchCompanies(query, this.criteria))
+    ).subscribe(data => {
+      this.tableContent = Object.assign({}, this.companiesService.flattenObjectRows(data));
+    },
+      error => {
+        console.log(error);
+        this.messageService.display('Something is wrong, Try later.',
+          'danger', 'center', 'top');
+      },
+    );
+
 
     /**
      * subscribe to actions events
@@ -68,6 +88,11 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       }
     ));
   }
+
+  resetSearch() {
+    this.keywords = '';
+  }
+
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());

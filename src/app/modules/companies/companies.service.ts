@@ -14,11 +14,15 @@ export class CompaniesService {
     return this.http.get<any[]>(url, { params });
   }
 
+  searchCompanies(query, field) {
+    const filters = {};
+    filters[field] = query;
+
+    const url = api.COMPANIES_LIST;
+    return this.http.get<any[]>(url, { params: filters });
+  }
+
   flattenObjectRows(data) {
-
-    console.log(data['rows'][0]);
-
-
     data['rows'].forEach(company => {
       company['carBrand'] = this.getStringFromObj(company['carBrand']);
       company['language'] = this.getStringFromObj(company['language']);

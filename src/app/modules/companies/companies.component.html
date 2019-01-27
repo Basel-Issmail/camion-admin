@@ -1,1 +1,30 @@
+<div fxLayout="row wrap" style="padding: 8px 0" fxLayoutGap="16px grid" fxLayoutAlign="center">
+    <div fxFlex.gt-md="30" fxFlex="100" fxLayoutAlign="center">
+        <mat-form-field>
+            <mat-select (selectionChange)="resetSearch()" [(value)]="criteria" matNativeControl placeholder="nel campo">
+                <mat-option value="azienda">Azienda</mat-option>
+                <mat-option value="vat">Piva</mat-option>
+                <mat-option value="email">Email</mat-option>
+                <mat-option value="telephone">Telefono</mat-option>
+                <!-- <mat-option value="createdAt">Registrato il</mat-option> -->
+                <mat-option value="street">Via</mat-option>
+                <mat-option value="number">N</mat-option>
+                <mat-option value="cap">Cap</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+
+    <div fxFlex.gt-md="30" fxFlex="100" fxLayoutAlign="center">
+        <div class="search-section">
+            <span style="max-width: 8%; margin-right: 4%; margin-left: 1%;" class="base-line">
+                <mat-icon>search</mat-icon>
+            </span>
+            <span style="width: 100%;">
+                <input type="text" [disabled]="!criteria" [(ngModel)]="keywords" placeholder="Search" class="search-button" #searchInput>
+            </span>
+        </div>
+    </div>
+</div>
+
 <app-table-content [tableContentData]="tableContent" [tableContentConfig]="tableConfig"></app-table-content>
