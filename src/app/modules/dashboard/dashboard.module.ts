@@ -8,6 +8,7 @@ import { TrucksComponent } from '../trucks/trucks.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CompaniesComponent } from '../companies/companies.component';
 import { FormsModule } from '@angular/forms';
+import { RouterTabModule } from '@zerohouse/router-tab';
 
 @NgModule({
   declarations: [DashboardComponent, HeaderComponent, TrucksComponent, CompaniesComponent],
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     DashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    RouterTabModule
   ]
 })
 export class DashboardModule { }

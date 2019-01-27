@@ -1,7 +1,7 @@
 export const localURL = 'http://localhost:3000/v1/';
 export const serverURL = 'http://camion.storexweb.com/v1/';
 
-export const baseURL = localURL;
+export const baseURL = serverURL;
 export const mediaPath = 'http://camion.storexweb.com/';
 export const api = {
   /**

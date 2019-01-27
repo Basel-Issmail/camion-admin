@@ -62,30 +62,30 @@
     font-weight: 600 !important;
   }
   
-  ::ng-deep .truck-tab {
+  ::ng-deep .mat-tab-label-active .truck-tab {
     color: #1e88e5 !important;
   }
   
-  ::ng-deep .company-tab {
+  ::ng-deep .mat-tab-label-active .company-tab {
     color: #e07000 !important;
   }
   
-  ::ng-deep .ads-tab {
+  ::ng-deep .mat-tab-label-active .ads-tab {
     color: #757575 !important;
   }
 
-  ::ng-deep .statistics-tab{
+  ::ng-deep .mat-tab-label-active .statistics-tab{
     color: #871F78 !important;
   }
 
-  ::ng-deep .pdf-tab{
+  ::ng-deep .mat-tab-label-active .pdf-tab{
     color: #d93025 !important;
   }
   
-  ::ng-deep .feedback-tab{
+  ::ng-deep .mat-tab-label-active .feedback-tab{
     color: #3F704D !important;
   }
 
-  ::ng-deep .notification-tab{
+  ::ng-deep .mat-tab-label-active .notification-tab{
     color: #fff00f !important;
   }
