@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { tableConfig } from './config/trucks-config';
 import { TrucksService } from './trucks.service';
 import { Action } from 'src/app/shared/models/Action';
-import { Subscription, concat } from 'rxjs';
+import { Subscription, concat, Observable, fromEvent } from 'rxjs';
 import { ActionEventsService } from 'src/app/shared/components/table/action-events.service';
 import { UserService } from 'src/app/shared/services/user.service';
-import { last } from 'rxjs/operators';
+import { last, distinctUntilChanged, map, switchMap, debounceTime, tap } from 'rxjs/operators';
 import { MessageService } from 'src/app/shared/services/message.service';
 
 @Component({
@@ -14,9 +14,11 @@ import { MessageService } from 'src/app/shared/services/message.service';
   styleUrls: ['./trucks.component.scss']
 })
 export class TrucksComponent implements OnInit, OnDestroy {
-
+  @ViewChild('searchInput') searchInput;
   tableConfig = tableConfig;
   tableContent;
+  criteria;
+  keywords = '';
   subscriptions: Subscription[] = [];
   constructor(private trucksService: TrucksService, private actionEventsService: ActionEventsService,
     private userService: UserService, private messageService: MessageService) { }
@@ -27,6 +29,25 @@ export class TrucksComponent implements OnInit, OnDestroy {
       data => {
         this.tableContent = Object.assign({}, this.trucksService.flattenObjectRows(data));
       }
+    );
+
+    // search
+    fromEvent(this.searchInput.nativeElement, 'keyup').pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      tap(() => {
+        console.log(this.criteria);
+      }),
+      map((event: any) => event.target.value),
+      switchMap(query => this.trucksService.searchTrucks(query, this.criteria))
+    ).subscribe(data => {
+      this.tableContent = Object.assign({}, this.trucksService.flattenObjectRows(data));
+    },
+      error => {
+        console.log(error);
+        this.messageService.display('Something is wrong, Try later.',
+          'danger', 'center', 'top');
+      },
     );
 
 
@@ -70,6 +91,14 @@ export class TrucksComponent implements OnInit, OnDestroy {
         }
       }
     ));
+  }
+
+  resetSearch() {
+    console.log(this.keywords);
+
+    this.keywords = '';
+
+    console.log(this.keywords);
   }
 
   ngOnDestroy(): void {

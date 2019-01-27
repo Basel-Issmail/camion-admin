@@ -7,11 +7,13 @@ import { HeaderComponent } from './layout/header/header.component';
 import { TrucksComponent } from '../trucks/trucks.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CompaniesComponent } from '../companies/companies.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DashboardComponent, HeaderComponent, TrucksComponent, CompaniesComponent],
   imports: [
     CommonModule,
+    FormsModule,
     DashboardRoutingModule,
     SharedModule
   ]
