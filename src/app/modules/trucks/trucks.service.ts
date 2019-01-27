@@ -18,6 +18,7 @@ export class TrucksService {
     data['rows'].forEach(truck => {
       truck['truckId'] = truck['id'];
       truck['id'] = truck['user']['id'];
+      truck['photo'] = (truck['profileImage']) ? api.mediaPath + truck['profileImage']['path'] : 'assets/images/users/default-profile.svg';
       truck['approved'] = truck['user']['approved'];
       truck['email'] = truck['user']['email'];
       truck['telephone'] = truck['user']['telephone'];
