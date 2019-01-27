@@ -127,8 +127,8 @@ export class TableContentComponent implements OnInit, OnDestroy {
 
   getParams() {
     const params = {
-      limit: (this.tableContentData && this.tableContentData.per_page) ? this.tableContentData.per_page : 50,
-      offset: (this.tableContentData && this.tableContentData.current_page) ? this.tableContentData.current_page : 0,
+      limit: (this.tableContentData && this.tableContentData.params && this.tableContentData.params.limit) ? this.tableContentData.params.limit : 50,
+      offset: (this.tableContentData && this.tableContentData.params && this.tableContentData.params.offset) ? this.tableContentData.params.offset : 0,
       tab: this.tableContentConfig.tabType,
       onField: this.sort.active || '',
       sort: this.sort.direction || ''
@@ -137,8 +137,11 @@ export class TableContentComponent implements OnInit, OnDestroy {
   }
 
   setParams(page, pageSize) {
-    this.tableContentData.current_page = page;
-    this.tableContentData.per_page = pageSize;
+    if (!this.tableContentData.params) {
+      this.tableContentData.params = {};
+    }
+    this.tableContentData.params.offset = page - 1;
+    this.tableContentData.params.limit = pageSize;
   }
   // addNewItem() {
   //   this.emitAction({ action: Action.Add, ids: [] });

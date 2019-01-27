@@ -55,6 +55,7 @@ export class TrucksComponent implements OnInit, OnDestroy {
         }
         if (observableAction !== null) {
           observableAction.subscribe(data => {
+            data.params = params;
             this.tableContent = Object.assign({}, this.trucksService.flattenObjectRows(data));
             if (entry['action'] !== Action.Paginate) {
               this.messageService.display('Trucks Updated Successfully');

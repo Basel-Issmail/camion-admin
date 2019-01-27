@@ -52,6 +52,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
         }
         if (observableAction !== null) {
           observableAction.subscribe(data => {
+            data.params = params;
             this.tableContent = Object.assign({}, this.companiesService.flattenObjectRows(data));
             if (entry['action'] !== Action.Paginate) {
               this.messageService.display('Companies Updated Successfully');

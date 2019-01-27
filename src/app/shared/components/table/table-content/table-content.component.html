@@ -36,9 +36,9 @@
   </div> -->
 
   <div *ngIf="showPagination" fxFlex.gt-md="90" fxFlex="90" fxLayoutAlign="center">
-    <mat-paginator (page)="page($event)" [length]="(tableContentData)? ((tableContentData['total'])? tableContentData['total'] : tableContentData['rows'].length): 0"
+    <mat-paginator (page)="page($event)" [length]="(tableContentData)? ((tableContentData['count'])? tableContentData['count'] : tableContentData['rows'].length): 0"
       [pageIndex]="tableContentData? (tableContentData[current_page] - 1) : 0" [pageSize]="tableContentData? ((tableContentData['per_page'])? tableContentData['per_page'] : tableContentData['rows'].length) : 50"
-      [pageSizeOptions]="[5, 25, 50, 100]"></mat-paginator>
+      [pageSizeOptions]="[1, 5, 25, 50, 100]"></mat-paginator>
   </div>
 </div>
 <!-- <mat-divider></mat-divider> -->
