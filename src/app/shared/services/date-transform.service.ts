@@ -8,7 +8,7 @@ export class DateTransformService {
 
   constructor(private datePipe: DatePipe) { }
 
-  transformDate(date, format = 'dd/mm/yyyy - hh:mm') {
+  transformDate(date, format = 'dd/MM/yyyy - HH:mm') {
     return this.datePipe.transform(date, format);
   }
 }
