@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { api } from 'src/config/api';
 import { HttpClient } from '@angular/common/http';
 import { itianLanguage } from 'src/config/translate';
+import { DateTransformService } from 'src/app/shared/services/date-transform.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompaniesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dateTransformService: DateTransformService) { }
 
   getCompanies(params = {}) {
     const url = api.COMPANIES_LIST;
@@ -33,6 +34,7 @@ export class CompaniesService {
       company['approved'] = company['user']['approved'];
       company['email'] = company['user']['email'];
       company['telephone'] = company['user']['telephone'];
+      company['createdAt'] = this.dateTransformService.transformDate(company['createdAt']);
     });
     return data;
   }

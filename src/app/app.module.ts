@@ -11,6 +11,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToeknInterceptor } from './shared/interceptors/token.interceptor';
 import { SpinnerInterceprotService } from './shared/interceptors/spinner-interceprot';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceprotService, multi: true, },
     { provide: HTTP_INTERCEPTORS, useClass: ToeknInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

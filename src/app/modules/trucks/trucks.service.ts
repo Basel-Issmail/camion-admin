@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { api } from 'src/config/api';
+import { DateTransformService } from 'src/app/shared/services/date-transform.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrucksService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dateTransformService: DateTransformService) { }
 
   getTrucks(params = {}) {
     const url = api.TRUCKS_LIST;
@@ -30,7 +31,9 @@ export class TrucksService {
       truck['approved'] = truck['user']['approved'];
       truck['email'] = truck['user']['email'];
       truck['telephone'] = truck['user']['telephone'];
+      truck['createdAt'] = this.dateTransformService.transformDate(truck['createdAt']);
     });
     return data;
   }
+
 }
