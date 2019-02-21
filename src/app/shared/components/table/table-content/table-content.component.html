@@ -1,5 +1,5 @@
 <div fxLayout="row wrap" style="padding: 8px 0">
-  <div fxFlex.gt-md="10" fxFlex="10" class="base-line">
+  <div fxFlex.gt-md="15" fxFlex="100" fxFlex.gt-xs="40" class="base-line">
 
     <!-- <a matTooltip="Add New Item" (click)="addNewItem()">
       <mat-icon class="action-icon" style="color: #1e88e5;
@@ -35,7 +35,7 @@
     </div>
   </div> -->
 
-  <div *ngIf="showPagination" fxFlex.gt-md="90" fxFlex="90" fxLayoutAlign="center">
+  <div *ngIf="showPagination" fxFlex.gt-md="85"  fxFlex.gt-xs="60"  fxFlex="100" fxLayoutAlign="center">
     <mat-paginator (page)="page($event)" [length]="(tableContentData)? ((tableContentData['count'])? tableContentData['count'] : tableContentData['rows'].length): 0"
       [pageIndex]="tableContentData? (tableContentData[current_page] - 1) : 0" [pageSize]="tableContentData? ((tableContentData['per_page'])? tableContentData['per_page'] : tableContentData['rows'].length) : 50"
       [pageSizeOptions]="[1, 5, 25, 50, 100]"></mat-paginator>
