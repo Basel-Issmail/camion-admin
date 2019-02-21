@@ -11,7 +11,7 @@ export const tableConfig: TableContentConfig = {
     LABELS: [ 'Azienda', 'Piva', 'Email', 'Telefono', 'Lingua parlate', 'Marche trattate', 'Tipologia',
     'Registrato il', 'Via', 'N', 'Cap', 'requests_received', 'requests_approved'],
     COLS: ['name', 'vat', 'email', 'telephone', 'language', 'carBrand', 'serviceType',
-    'createdAt', 'street', 'number', 'cap', 'requests_received', 'requests_approved'],
+    'createdAt', 'street', 'number', 'cap', 'interventi ricevute', 'interventi approvate'],
   },
   specialLabels: [specialLabels.Approved],
 };

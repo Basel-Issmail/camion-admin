@@ -9,9 +9,9 @@ export const tableConfig: TableContentConfig = {
   displayCols: {
     DISPLAYED_COLS: ['nickname', 'firstName', 'lastName', 'companyName', 'vat'],
     LABELS: ['nick', 'Name', 'Cognome', 'Azienda', 'Piva', 'Cod fiscale', 'Email', 'Telefono',
-      'pagamento preferito', 'marca mezzo', 'Registrato il', 'Richieste ricevute', 'Richieste approvate'],
+      'pagamento preferito', 'marca mezzo', 'Registrato il', 'interventi richiesti', 'interventi approvati'],
     COLS: ['nickname', 'firstName', 'lastName', 'companyName', 'vat', 'fiscalCode', 'email', 'telephone',
-      'preferredPayment', 'carBrand', 'createdAt', 'requests_received', 'requests_approved'],
+      'preferredPayment', 'carBrand', 'createdAt', 'interventi richiesti', 'interventi approvati'],
   },
   specialLabels: [specialLabels.Approved, specialLabels.photo],
 };
