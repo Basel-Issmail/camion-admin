@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { api } from 'src/config/api';
 import { HttpClient } from '@angular/common/http';
+import { itianLanguage } from 'src/config/translate';
 
 @Injectable({
   providedIn: 'root'
@@ -40,10 +41,16 @@ export class CompaniesService {
     const resultArr = [];
     for (const key in propertyObj) {
       if (propertyObj[key] === true) {
-        resultArr.push(key);
+        resultArr.push(this.translate(key));
+      } else if (key === 'rescue' && propertyObj[key] && propertyObj[key] !== 'NO') {
+        resultArr.push(this.translate(propertyObj[key]));
       }
     }
     return resultArr.join(', ');
+  }
+
+  translate(key) {
+    return (itianLanguage[key]) ? itianLanguage[key] : key;
   }
 
 }
