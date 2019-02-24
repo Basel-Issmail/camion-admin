@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   private setSession(authResult) {
-    const expiresAt = moment().add(authResult.expiresIn, 'second');
+    const expiresAt = moment().add(authResult.expiresIn, 'days');
     this.loggedInObs.next(true);
     localStorage.setItem('token', authResult.token);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
