@@ -14,6 +14,8 @@ export const api = {
    * Users
    */
   APPROVE: baseURL + 'user/changeApproved',
+  DELETE: baseURL + 'user/changeDeleted',
+  SEND_RESET_PASSWORD_EMAIL: baseURL + 'user/emailPasswordToken',
   LOGIN: baseURL + 'user/login',
 
   /*

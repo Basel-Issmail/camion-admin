@@ -61,12 +61,14 @@
     <mat-icon class="mat-small-icon">cancel</mat-icon>
   </a>
 
+  <a matTooltip="Cancella" (click)="emitAction(selectedId ,action.Delete)" id="{{rowId}}_delete" *ngIf="displayedActions.includes(action.Delete) && (!row.deleted || header)">
+    <mat-icon class="mat-small-icon">cancel</mat-icon>
+  </a>
 
   <a matTooltip="Re invia PWD" (click)="emitAction(selectedId ,action.ResetPassword)" id="{{rowId}}_restore" *ngIf="displayedActions.includes(action.ResetPassword) && selectedId.length === 1">
     <mat-icon class="mat-small-icon" [class.borderleft]="header">autorenew
     </mat-icon>
   </a>
-
 
 
 </span>

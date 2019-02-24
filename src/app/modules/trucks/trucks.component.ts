@@ -57,16 +57,18 @@ export class TrucksComponent implements OnInit, OnDestroy {
         const ids = entry['ids'];
         const params = entry['params'];
         let observableAction = null;
-        const message = null;
+        let message = null;
         switch (entry['action']) {
           case Action.Paginate:
             observableAction = this.trucksService.getTrucks(params);
             break;
-          case Action.Activate:
-            observableAction = concat(this.userService.activateUsers(ids), this.trucksService.getTrucks(params)).pipe(last());
+          case Action.Delete:
+            observableAction = concat(this.userService.deleteUsers(ids), this.trucksService.getTrucks(params)).pipe(last());
+            message = `Users Deleted Succcessfully`;
             break;
-          case Action.Deactivate:
-            observableAction = concat(this.userService.deactivateUsers(ids), this.trucksService.getTrucks(params)).pipe(last());
+          case Action.ResetPassword:
+            observableAction = concat(this.userService.sendResetPasswordEmail(ids[0]), this.trucksService.getTrucks(params)).pipe(last());
+            message = `Password reset sent Succcessfully`;
             break;
           default:
             break;
@@ -76,7 +78,7 @@ export class TrucksComponent implements OnInit, OnDestroy {
             data.params = params;
             this.tableContent = Object.assign({}, this.trucksService.flattenObjectRows(data));
             if (entry['action'] !== Action.Paginate) {
-              this.messageService.display('Trucks Updated Successfully');
+              this.messageService.display(message);
             }
           },
             error => {

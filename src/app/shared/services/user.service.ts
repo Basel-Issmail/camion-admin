@@ -18,4 +18,14 @@ export class UserService {
     const url = api.APPROVE;
     return this.http.put<any[]>(url, { ids, approved: false });
   }
+
+  deleteUsers(ids) {
+    const url = api.DELETE;
+    return this.http.put<any[]>(url, { ids, deleted: true });
+  }
+
+  sendResetPasswordEmail(id) {
+    const url = api.SEND_RESET_PASSWORD_EMAIL;
+    return this.http.post<any[]>(url, { id });
+  }
 }

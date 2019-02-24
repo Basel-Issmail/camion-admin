@@ -3,4 +3,5 @@ export enum Action {
   Deactivate,
   ResetPassword,
   Paginate,
+  Delete,
 }
